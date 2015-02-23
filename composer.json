@@ -1,0 +1,28 @@
+{
+  "name": "bkoetsier/theme",
+  "description": "A simple theming package",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bastian Koetsier",
+      "email": "bastian.koetsier@googlemail.com"
+    }
+  ],
+  "autoload":
+  {
+    "psr-4":{
+      "Bkoetsier\\": "src/"
+    }
+  },
+  "require": {
+    "illuminate/config": "5.0.*",
+    "illuminate/contracts":"5.0.*",
+    "illuminate/support": "5.0.*",
+    "illuminate/view":"5.0.*"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-develop": "1.0.x-dev"
+    }
+  }
+}
