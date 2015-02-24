@@ -4,10 +4,22 @@ use Illuminate\Contracts\Support\Renderable;
 
 class Script implements Renderable{
 
-	protected $src,
-		$type,
-		$defer,
-		$async;
+    /**
+     * @var string
+     */
+    protected $src;
+    /**
+     * @var string
+     */
+    protected $type;
+    /**
+     * @var bool
+     */
+    protected $defer;
+    /**
+     * @var bool
+     */
+    protected $async;
 
 	function __construct($src,$type = 'text/javascript', $defer = false, $async = false)
 	{
@@ -31,6 +43,40 @@ class Script implements Renderable{
 			$this->compileAsync()
 		);
 	}
+
+    /**
+     * @return string
+     */
+    public function getSrc()
+    {
+        return $this->src;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isDefer()
+    {
+        return $this->defer;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isAsync()
+    {
+        return $this->async;
+    }
+
+
 
 	private function compileSrc()
 	{

@@ -2,9 +2,20 @@
 
 class RobotsMeta extends Meta{
 
+    /**
+     * @var bool
+     */
 	protected $index;
+
+    /**
+     * @var bool
+     */
 	protected $follow;
 
+    /**
+     * @param bool $index
+     * @param bool $follow
+     */
 	function __construct($index = true,$follow = true)
 	{
 		$this->index = $index;
@@ -12,6 +23,25 @@ class RobotsMeta extends Meta{
 		parent::__construct('robots',$this->compileContent());
 	}
 
+    /**
+     * @return boolean
+     */
+    public function isIndex()
+    {
+        return $this->index;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isFollow()
+    {
+        return $this->follow;
+    }
+
+    /**
+     * @return string
+     */
 	protected function compileContent()
 	{
 		$content = $this->index ? 'index' : 'noindex';

@@ -4,14 +4,18 @@ use Illuminate\Contracts\Support\Renderable;
 
 class Title implements Renderable{
 
+    /**
+     * @var string
+     */
+    protected $title;
 
-	protected $title;
-
-	function __construct($title)
+    /**
+     * @param string $title
+     */
+    function __construct($title)
 	{
 		$this->title = $title;
 	}
-
 
 	/**
 	 * Get the evaluated contents of the object.

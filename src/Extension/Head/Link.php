@@ -4,13 +4,35 @@ use Illuminate\Contracts\Support\Renderable;
 
 class Link implements Renderable{
 
-	protected $rel,
-	 	$href,
-	 	$type,
-		$media,
-		$hrefLang;
+    /**
+     * @var string
+     */
+    protected $rel;
+    /**
+     * @var string
+     */
+    protected $href;
+    /**
+     * @var string|null
+     */
+    protected $type;
+    /**
+     * @var string|null
+     */
+    protected $media;
+    /**
+     * @var string|null
+     */
+    protected $hrefLang;
 
-	function __construct($rel, $href, $type = null, $media = null, $hrefLang = null)
+    /**
+     * @param string $rel
+     * @param  string $href
+     * @param string|null $type
+     * @param string|null $media
+     * @param string|null $hrefLang
+     */
+    function __construct($rel, $href, $type = null, $media = null, $hrefLang = null)
 	{
 		$this->rel = $rel;
 		$this->href = $href;
@@ -18,7 +40,6 @@ class Link implements Renderable{
 		$this->media = $media;
 		$this->hrefLang = $hrefLang;
 	}
-
 
 	/**
 	 * Get the evaluated contents of the object.
@@ -35,17 +56,66 @@ class Link implements Renderable{
 		);
 	}
 
-	protected function compileRel()
+    /**
+     * @return string
+     */
+    public function getRel()
+    {
+        return $this->rel;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHref()
+    {
+        return $this->href;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getHrefLang()
+    {
+        return $this->hrefLang;
+    }
+
+    /**
+     * @return string
+     */
+    protected function compileRel()
 	{
 		return sprintf('rel="%s"',$this->rel);
 	}
 
-	protected function compileHref()
+    /**
+     * @return string
+     */
+    protected function compileHref()
 	{
 		return sprintf('href="%s"',$this->href);
 	}
 
-	protected function compileType()
+    /**
+     * @return string
+     */
+    protected function compileType()
 	{
 		if(is_null($this->type)){
 			return '';
@@ -53,7 +123,10 @@ class Link implements Renderable{
 		return sprintf('type="%s"',$this->type);
 	}
 
-	protected function compileMedia()
+    /**
+     * @return string
+     */
+    protected function compileMedia()
 	{
 		if (is_null($this->media)) {
 			return '';

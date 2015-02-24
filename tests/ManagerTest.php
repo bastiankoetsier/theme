@@ -1,10 +1,12 @@
 <?php namespace Bkoetsier\Theme;
 
-use Illuminate\Filesystem\FilesystemAdapter;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Filesystem as Flysystem;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\View\Engines\EngineResolver;
+use Illuminate\View\Factory;
+use Illuminate\View\FileViewFinder;
 
-class ManagerTest extends \TestCase {
+class ManagerTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @var Manager
@@ -13,12 +15,12 @@ class ManagerTest extends \TestCase {
 
     public function setUp()
     {
-        $viewPath = __DIR__.'/stubs/themes';
-        $files = new FilesystemAdapter(new Flysystem(new Local(__DIR__)));
         parent::setUp();
+        $viewPath = __DIR__.'/stubs/themes';
+        $finder = new FileViewFinder(new Filesystem(),array($viewPath));
+        $view = new Factory(new EngineResolver,$finder,new Dispatcher);
         $this->sut = new Manager(
-            $files,
-            $this->app->make('view'),
+            $view,
             $viewPath
         );
     }
