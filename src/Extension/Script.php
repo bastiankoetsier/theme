@@ -21,7 +21,13 @@ class Script implements Renderable{
      */
     protected $async;
 
-	function __construct($src,$type = 'text/javascript', $defer = false, $async = false)
+    /**
+     * @param $src
+     * @param string $type
+     * @param bool $defer
+     * @param bool $async
+     */
+    function __construct($src,$type = 'text/javascript', $defer = false, $async = false)
 	{
 		$this->src = $src;
 		$this->defer = $defer;
@@ -76,19 +82,26 @@ class Script implements Renderable{
         return $this->async;
     }
 
-
-
-	private function compileSrc()
+    /**
+     * @return string
+     */
+    private function compileSrc()
 	{
 		return sprintf('src="%s"',$this->src);
 	}
 
-	private function compileType()
+    /**
+     * @return string
+     */
+    private function compileType()
 	{
 		return sprintf('type="%s"',$this->type);
 	}
 
-	private function compileDefer()
+    /**
+     * @return string
+     */
+    private function compileDefer()
 	{
 		if( ! $this->defer){
 			return '';
@@ -96,7 +109,10 @@ class Script implements Renderable{
 		return 'defer';
 	}
 
-	private function compileAsync()
+    /**
+     * @return string
+     */
+    private function compileAsync()
 	{
 		if( ! $this->async){
 			return '';

@@ -26,4 +26,14 @@ class Title implements Renderable{
 	{
 		return sprintf('<title>%s</title>',$this->title);
 	}
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+
 }

@@ -20,25 +20,19 @@ class Link implements Renderable{
      * @var string|null
      */
     protected $media;
-    /**
-     * @var string|null
-     */
-    protected $hrefLang;
 
     /**
      * @param string $rel
      * @param  string $href
      * @param string|null $type
      * @param string|null $media
-     * @param string|null $hrefLang
      */
-    function __construct($rel, $href, $type = null, $media = null, $hrefLang = null)
+    function __construct($rel, $href, $type = null, $media = null)
 	{
 		$this->rel = $rel;
 		$this->href = $href;
 		$this->type = $type;
 		$this->media = $media;
-		$this->hrefLang = $hrefLang;
 	}
 
 	/**
@@ -86,14 +80,6 @@ class Link implements Renderable{
     public function getMedia()
     {
         return $this->media;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getHrefLang()
-    {
-        return $this->hrefLang;
     }
 
     /**

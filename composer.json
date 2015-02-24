@@ -18,7 +18,8 @@
     "illuminate/config": "5.0.*",
     "illuminate/contracts":"5.0.*",
     "illuminate/support": "5.0.*",
-    "illuminate/view":"5.0.*"
+    "illuminate/view":"5.0.*",
+    "illuminate/events":"5.0.*"
   },
   "extra": {
     "branch-alias": {
