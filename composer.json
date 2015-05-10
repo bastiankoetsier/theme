@@ -11,7 +11,7 @@
   "autoload":
   {
     "psr-4":{
-      "Bkoetsier\\": "src/"
+      "Bkoetsier\\Theme\\": "src/"
     }
   },
   "require": {
