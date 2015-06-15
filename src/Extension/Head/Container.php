@@ -138,6 +138,19 @@ class Container
     }
 
     /**
+     * Add a meta tag to the header
+     * @param string $name
+     * @param string $content
+     * @return $this
+     */
+    public function meta($name, $content)
+    {
+        $meta = $this->lines->get('meta');
+        $meta->push(new Meta($name, $content));
+        return $this;
+    }
+    
+    /**
      * Set the meta robots tag
      * @param bool $index
      * @param bool $follow
