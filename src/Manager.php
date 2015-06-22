@@ -81,7 +81,6 @@ class Manager {
         if( ! $this->templateExists($templateType)){
             throw new TemplateDoesNotExistException("$templateType does not exist");
         }
-        dump($this->view->getEngineResolver()->resolve('blade')->getCompiler());
         return call_user_func_array(array($this->view,'make'),array($templateType,$data,$mergeData));
     }
 

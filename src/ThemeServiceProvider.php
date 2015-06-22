@@ -13,11 +13,10 @@ class ThemeServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-        $bladeCompiler = $this->app['view']->getEngineResolver()->resolve('blade')->getCompiler();
-        $bladeCompiler->directive('head',$this->app['theme.html.head']);
         $this->publishes([
             __DIR__ . '/config/themes.php' => $this->app->make('path.config').'/themes.php'
         ]);
+        view()->composer('*',HtmlHeadComposer::class);
 	}
 
 	/**
@@ -28,11 +27,8 @@ class ThemeServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->registerThemeManager();
-
 		$this->registerHtmlHead();
-
 		$this->registerFacades();
-
 	}
 
 	protected function registerFacades()
@@ -50,7 +46,7 @@ class ThemeServiceProvider extends ServiceProvider {
 	protected function registerHtmlHead()
 	{
 		$this->app->singleton(
-			'theme.html.head',
+			Container::class,
 			function ($app) {
 				return new Container;
 			}

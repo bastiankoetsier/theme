@@ -1,6 +1,5 @@
 <?php namespace Bkoetsier\Theme\Extension\Head;
 
-use Bkoetsier\Theme\Extension\Script;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;
 use Illuminate\View\Compilers\BladeCompiler;
@@ -19,7 +18,6 @@ class Container
                 'title' => new Title(''),
                 'meta' => new Collection,
                 'style' => new Collection,
-                'script' => new Collection,
                 'link' => new Collection
             )
         );
@@ -36,10 +34,9 @@ class Container
     /** This is executed through Blade´s directive-method
      * @return string
      */
-    public function __invoke()
+    public function __toString()
     {
         $replacement = '';
-//        $pattern = $compiler->createPlainMatcher('head');
         foreach ($this->lines as $key => $value) {
             switch (true) {
                 case $value instanceof Collection:
