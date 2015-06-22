@@ -1,5 +1,6 @@
 <?php namespace Bkoetsier\Theme\Facade;
 
+use Bkoetsier\Theme\Extension\Head\Container;
 use Illuminate\Support\Facades\Facade;
 
 class HtmlHead extends Facade{
@@ -10,7 +11,7 @@ class HtmlHead extends Facade{
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'theme.html.head'; }
+	protected static function getFacadeAccessor() { return Container::class; }
 
 
 }
