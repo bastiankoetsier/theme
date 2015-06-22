@@ -92,17 +92,4 @@ class ContainerTest extends \PHPUnit_Framework_TestCase{
         $this->assertTrue($robots->isFollow());
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_a_script_to_line_collection()
-    {
-        $this->sut->script('angular.js');
-        $lines = $this->sut->getLines();
-        $scriptCollection = $lines->get('script');
-        /** @var \Bkoetsier\Theme\Extension\Script  $script */
-        $script = $scriptCollection->first();
-        $this->assertInstanceOf('Bkoetsier\Theme\Extension\Script',$script);
-        $this->assertEquals('angular.js',$script->getSrc());
-    }
 }

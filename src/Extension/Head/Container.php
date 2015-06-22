@@ -33,15 +33,13 @@ class Container
         return $this->lines;
     }
 
-    /** This is executed through Blade´s extend-method
-     * @param $viewContent
-     * @param \Illuminate\View\Compilers\BladeCompiler $compiler
+    /** This is executed through Blade´s directive-method
      * @return string
      */
-    public function __invoke($viewContent, BladeCompiler $compiler)
+    public function __invoke()
     {
         $replacement = '';
-        $pattern = $compiler->createPlainMatcher('head');
+//        $pattern = $compiler->createPlainMatcher('head');
         foreach ($this->lines as $key => $value) {
             switch (true) {
                 case $value instanceof Collection:
@@ -54,7 +52,7 @@ class Container
                     throw new \InvalidArgumentException("$value");
             }
         }
-        return preg_replace($pattern, $replacement, $viewContent);
+        return $replacement;
     }
 
     /**
@@ -106,20 +104,6 @@ class Container
     {
         $links = $this->lines->get('link');
         $links->push(new Link('canonical', $href));
-        return $this;
-    }
-
-    /**
-     * Add a javascript to the header
-     * @param string $src
-     * @param bool $defer
-     * @param bool $asnyc
-     * @return $this
-     */
-    public function script($src, $defer = false, $asnyc = false)
-    {
-        $scripts = $this->lines->get('script');
-        $scripts->push(new Script($src, 'text/javascript', $defer, $asnyc));
         return $this;
     }
 

@@ -13,10 +13,8 @@ class ThemeServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		// get the BladeCompiler to extend it with HtmlHead
         $bladeCompiler = $this->app['view']->getEngineResolver()->resolve('blade')->getCompiler();
-        $bladeCompiler->extend($this->app['theme.html.head']);
-
+        $bladeCompiler->directive('head',$this->app['theme.html.head']);
         $this->publishes([
             __DIR__ . '/config/themes.php' => $this->app->make('path.config').'/themes.php'
         ]);
