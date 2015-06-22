@@ -15,11 +15,11 @@
     }
   },
   "require": {
-    "illuminate/config": "5.*",
-    "illuminate/contracts":"5.*",
-    "illuminate/support": "5.*",
-    "illuminate/view":"5.*",
-    "illuminate/events":"5.*"
+    "illuminate/config": "^5.1",
+    "illuminate/contracts":"^5.1",
+    "illuminate/support": "^5.1",
+    "illuminate/view":"^5.1",
+    "illuminate/events":"^5.1"
   },
   "extra": {
     "branch-alias": {
